@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom"
 import css from "./Modal.module.css"
-import NoteForm from "../NoteForrm/NoteForm"
+import NoteForm from "../NoteForm/NoteForm"
 import { useEffect } from "react"
 
 interface ModalProps {

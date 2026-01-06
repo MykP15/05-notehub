@@ -79,7 +79,7 @@ function NoteForm({ onCancel }: NoteFormProps) {
             <button
               type="submit"
               className={css.submitButton}
-              disabled={false}>
+              disabled={createMutation.isPending}>
               Create note
             </button>
           </div>
