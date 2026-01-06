@@ -44,7 +44,7 @@ function App() {
             </header>
             {isLoading ? <Loader /> : null}
             {isError ? <ErrorMessage /> : null}
-            {data && data.notes.length > 0 ? null : <NothingHereMessage />}
+            { !isError && !isLoading && data && data.notes.length === 0 && <NothingHereMessage />}
             <NoteList notes={data?.notes} />
             { modalIsOpen && <Modal onClose={() => setModalIsOpen(false)} />}
 </div>
