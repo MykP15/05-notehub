@@ -1,15 +1,15 @@
 import { createPortal } from "react-dom"
 import css from "./Modal.module.css"
-import NoteForm from "../NoteForm/NoteForm"
-import { useEffect } from "react"
+import { useEffect, type ReactNode } from "react"
 
 interface ModalProps {
-  onClose: () => void
+  onClose: () => void,
+  children: ReactNode
 }
 
 
 const modalRoot = document.getElementById("modal-root")
-function Modal({ onClose }: ModalProps) {
+function Modal({ onClose, children }: ModalProps) {
   
 useEffect(() => {
 const handleEsc = (event: KeyboardEvent) => {
@@ -29,6 +29,7 @@ const handleEsc = (event: KeyboardEvent) => {
     if (e.target === e.currentTarget) onClose();
   };
 
+  if (!modalRoot) return null;
 
     return createPortal(
         <>
@@ -39,7 +40,7 @@ const handleEsc = (event: KeyboardEvent) => {
           onClick={handleBackdrop}
 >
   <div className={css.modal}>
-            <NoteForm onCancel={onClose} />
+            {children}
   </div>
             </div>
         </>,

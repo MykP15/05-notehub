@@ -29,7 +29,7 @@ const fetchNotes = async ({
   perPage = 12,
   search,
 }: FetchNotesProps): Promise<FetchNotesResponse> => {
-  const res = await axios.get(BASE_URL, {
+  const res = await axios.get<FetchNotesResponse>(BASE_URL, {
     params: {
       page: page,
       perPage: perPage,
@@ -42,7 +42,7 @@ const fetchNotes = async ({
   return res.data;
 };
 
-const createNote = async (newNote: NewNote) => {
+const createNote = async (newNote: NewNote): Promise<Note> => {
   const res: AxiosResponse<Note> = await axios.post(BASE_URL, newNote, {
     params: {},
     headers: {
@@ -53,7 +53,7 @@ const createNote = async (newNote: NewNote) => {
   return res.data;
 };
 
-const deleteNote = async (id: string) => {
+const deleteNote = async (id: string): Promise<Note> => {
   const res: AxiosResponse<Note> = await axios.delete(`${BASE_URL}/${id}`, {
     params: {},
     headers: {
