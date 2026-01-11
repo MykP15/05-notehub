@@ -44,22 +44,18 @@ const fetchNotes = async ({
 
 const createNote = async (newNote: NewNote): Promise<Note> => {
   const res: AxiosResponse<Note> = await axios.post(BASE_URL, newNote, {
-    params: {},
     headers: {
       Authorization: `Bearer ${MY_KEY}`,
     },
   });
-  console.log(res.data);
   return res.data;
 };
 
 const deleteNote = async (id: string): Promise<Note> => {
   const res: AxiosResponse<Note> = await axios.delete(`${BASE_URL}/${id}`, {
-    params: {},
     headers: {
       Authorization: `Bearer ${MY_KEY}`,
     },
   });
-  console.log(res.data);
   return res.data;
 };
